@@ -1,0 +1,15 @@
+---
+import {Camera} from './file.jsx';
+interface Props{
+    icon: string;
+    title: string;
+    description: string;
+    link: string;
+}
+const { icon, title, description, link } = Astro.props;
+---
+<a href={link} aria-label={description}>
+
+    <Camera/>
+
+</a>

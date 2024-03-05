@@ -1,0 +1,62 @@
+---
+import {getUserData,getSingleUserData} from '../../services/services'
+import Layout from '../../layouts/Layout.astro'
+const {id}= Astro.params
+console.log(id)
+let user:any
+if(id){
+    user = await getSingleUserData({id})
+    console.log(user.trabajoData)
+}else{
+    user={
+        nombre:'No hay usuario',
+        am:'No hay usuario'
+    }
+}
+export async function getStaticPaths(){
+    const users = await getUserData()
+    return users.map((use)=>({
+        params:{id:use.id_usuario}
+    }));
+}
+---
+<Layout title=`Trabajos de ${user.userData[0].nombre} `>
+{
+    <section class="flex items-center flex-col h-screen">
+    <div class=" flex items-center justify-center flex-col">
+    <h1 class=" my-6 text-4xl font-semibold">Evidencias {user.userData[0].nombre}</h1>    
+    <h2>de</h2>
+    <h3 class=" text-black my-6 font-bold">{user.userData[0]?.nombre + user.userData[0].ap + user.userData[0].am}</h1>
+
+    </div>
+    <section class=" w-full  flex flex-wrap justify-around py-6">
+        {
+            user.trabajoData.map((trabajo:any)=>{
+                return(
+                <div
+  class="group flex justify-center items-center flex-col gap-2 w-80 h-56 duration-500 relative rounded-lg p-4 bg-gray-100 hover:-translate-y-2 hover:shadow-xl shadow-gray-300"
+>
+
+  <div class="">
+    <h2 class="text-xl font-bold mb-2 text-gray-800">{trabajo.nombre_trabajo}</h2>
+
+  </div>
+  <a
+  href={trabajo.ruta_archivo}
+    class="hover:bg-gray-300 bg-gray-200 text-gray-800 mt-6 rounded p-2 px-6"
+  >
+{
+    trabajo.tipo==='texto'?"Obtener archivo":"Visitar Sitio"
+}
+  </a>
+</div>
+
+                )
+            })
+        }
+
+
+    </section>
+    </section>
+}
+</Layout>

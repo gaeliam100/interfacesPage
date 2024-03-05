@@ -5,7 +5,7 @@ export const getUserData = async () => {
 }
 
 export const getSingleUserData = async ({id}) => {
-    const response = await fetch(`https://kzx55n6w-3000.usw3.devtunnels.ms/${id}`);
+    const response = await fetch(`https://kzx55n6w-3000.usw3.devtunnels.ms/users/${id}`);
     const data = await response.json();
 
     const response2 = await fetch(`https://kzx55n6w-3000.usw3.devtunnels.ms/trabajos/${id}`);

@@ -6,9 +6,8 @@ import  Bulb  from '../Icons/Bubble.astro'
 import  Camera  from '../Icons/Camera.astro'
 interface Props{
   titleButton: string,
-  page: string
 }
-  const {titleButton,page} =Astro.props
+  const {titleButton} =Astro.props
 ---
 <nav class=" bg-background top-0 z-10 w-full">
   <div class="max-w-6xl mx-auto px-4">
@@ -26,7 +25,7 @@ interface Props{
       </div>
       <!-- secondary nav -->
       <div class="flex items-center space-x-1">
-        <a href={page} class="py-2 px-7 bg-black rounded-full text-gray-100 hover:text-gray-400">{titleButton}</a>
+        <a href={titleButton=="Inicio"?"/":"/Galery"} class="py-2 px-7 bg-black rounded-full text-gray-100 hover:text-gray-400">{titleButton}</a>
       </div>
       <!-- mobile button goes here -->
     </div>

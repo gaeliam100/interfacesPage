@@ -12,7 +12,7 @@ const options=[
 ---
 <section class="w-full flex justify-center items-center h-8 ">
     <nav transition:persist="" class="bottom-0 flex fixed z-10 max-w-64 w-full mb-3 scale-item">
-        <ul class="flex w-full py-2 px-4 gap-x-4 justify-center items-center shadow-xl rounded-full">
+        <ul id="dock-container-item" class="flex w-full py-2 px-4 gap-x-4 justify-center items-center shadow-xl rounded-full">
            {
             options.map((option, index) => {
                 return (
@@ -28,20 +28,72 @@ const options=[
         </ul>
     </nav>
 </section>
-<style>
-    /* Agrega estas clases a tu archivo CSS */
 
-.scale-item {
-    transition: transform 0.3s ease-in-out;
-}
+<script>
+    const menuContainer = document.querySelector('.dock-container-item');
+const menuItems = document.querySelectorAll('.dock-item');
+const defaultItemScale = 1;
+const hoverScale = 2.5;
+const sideItemScale = 2;
 
-.scale-item:hover {
-    transform: scale(1.2); /* Ajusta el valor de escala según tus preferencias */
-}
+const defaultMargin = "10px";
+const expandedMargin = "40px";
 
-/* Para los ítems no seleccionados, puedes agregar una transformación menor */
-.scale-item:not(:hover) {
-    transform: scale(1.1); /* Este será el efecto de "levantarse" ligeramente */
-}
+// Crear un objeto para rastrear el estado de los elementos
+const itemStates = {};
 
-</style>
+menuItems.forEach((item, index) => {
+  // Agregar controladores de eventos para actualizar el estado
+  item.addEventListener('mouseenter', () => {
+    itemStates[index].isHovered = true;
+
+    // Marcar los vecinos como side items
+    if (index > 0) {
+      itemStates[index - 1].isSideItem = true;
+    }
+    if (index < menuItems.length - 1) {
+      itemStates[index + 1].isSideItem = true;
+    }
+  });
+
+  item.addEventListener('mouseleave', () => {
+    itemStates[index].isHovered = false;
+
+    // Desmarcar los vecinos como side items
+    if (index > 0) {
+      itemStates[index - 1].isSideItem = false;
+    }
+    if (index < menuItems.length - 1) {
+      itemStates[index + 1].isSideItem = false;
+    }
+  });
+});
+
+const updateDockItems = () => {
+  menuItems.forEach((item, index) => {
+    let scale = defaultItemScale;
+    let margin = defaultMargin;
+    if (itemStates[index].isHovered) {
+      scale = hoverScale;
+      margin = expandedMargin;
+    } else if (itemStates[index].isSideItem) {
+      scale = sideItemScale;
+      margin = expandedMargin;
+    }
+    (item as HTMLElement).style.transform = `scale(${scale})`;
+    (item as HTMLElement).style.margin =`0 ${margin}`;
+  });
+};
+menuItems.forEach((item) => {
+item.addEventListener("mousemove",()=>{
+menuItems.forEach((otherItem,index)=>{
+    otherItem[index].isHovered=item;
+    otherItem[index].isSideItem=Math.abs(
+        Array.from(menuItems).indexOf(otherItem)-
+        Array.from(menuItems).indexOf(item)
+    )===1;
+});
+updateDockItems();
+});
+});
+</script>

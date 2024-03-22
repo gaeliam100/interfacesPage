@@ -1,73 +1,19 @@
 ---
-import Image from 'astro/components/Image.astro';
-export interface Props {
-  id?: string;
-  title?: string;
-  subtitle?: string;
-  tagline?: string;
-  content?: string;
-  image?: string | any; 
-}
-
-const {
-  id,
-  title = await Astro.slots.render('title'),
-  subtitle = await Astro.slots.render('subtitle'),
-  tagline,
-  content = await Astro.slots.render('content'),
-  image = await Astro.slots.render('image'),
-} = Astro.props;
+import Arrow from '../components/Arrow.astro'
 ---
-
-<section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
-    <div class="py-12 md:py-20">
-      <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
-        {
-          tagline && (
-            <p
-              class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase"
-              set:html={tagline}
-            />
-          )
-        }
-        {
-          title && (
-            <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-900"
-              set:html={title}
-            />
-          )
-        }
-        <div class="max-w-3xl mx-auto">
-          {subtitle && <p class="text-xl text-muted mb-6 dark:text-gray-700" set:html={subtitle} />}
-
-        </div>
-        {content && <Fragment set:html={content} />}
-      </div>
-      <div>
-        {
-          image && (
-            <div class="relative m-auto max-w-5xl">
-              {typeof image === 'string' ? (
-                <Fragment set:html={image} />
-              ) : (
-                <Image
-                  class="mx-auto rounded-md w-full object-cover object-center"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                  loading="eager"
-                  width={1024}
-                  height={576}
-                  {...image}
-                />
-              )}
-            </div>
-          )
-        }
-      </div>
-    </div>
-  </div>
+<section class="relative bg-background flex-col w-full  flex justify-center items-center min-h-screen">
+  <section class="flex justify-center items-center text-center flex-col">
+    <h1 class=" text-8xl text-title font-[500] tracking-wider leading-2 ">Reduce el Ruido</h1>
+    <h2 class="text-8xl text-title font-[500] tracking-wider leading-2">Eleva la Calma</h2>
+  </section>
+  <img src="/img/megafono2.webp" alt="Logo" class="w-1/4 rounded-full"/>
+  <section class="flex justify-between w-full p-7 font-extralight">
+    <p class="max-w-md">
+      El ruido es el contaminante más común y se define como cualquier sonido clasificado como molesto o inoportuno
+    </p>
+    <a class=" font-extralight flex text-2xl cursor-pointer justify-center items-center">
+      <span class=" text-balance text-base font-extralight">Explorar</span>
+      <Arrow />
+    </a>
+  </section>
 </section>

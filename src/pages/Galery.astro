@@ -1,12 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import Container from '../components/Container.astro'
+
 ---
-<Layout title="Fotos Equipo 1">
+<Layout title="Galeria">
 	<main>
-        <section>
-            <h1>
-                Galeria
-            </h1>
-        </section>	
+<Container>
+    <h1 class="text-2xl md:text-4xl text-title font-[500] tracking-wider leading-2 ">Fotos Equipo 1</h1>
+    <p class="text-xl my-2 text-title font-[500] tracking-wider leading-2 ">Estas son las fotos del equipo 1</p>
+    <ul class=" flex  items-center flex-col md:flex-row justify-around w-full gap-x-3 gap-y-3">
+        <li><img class="max-w-md object-cover aspect-square rounded-lg my-3" src="/img/Telas.jpeg" alt="Foto 1/"></li>
+
+        <li class="relative">
+            <img class="max-w-md object-cover aspect-square rounded-lg" src="/img/Equipo.jpeg" alt="Foto 2"/>
+            <span class="text-xl text-white absolute bottom-0 right-0 p-4">Equipo1</span>
+        </li>
+    </ul>
+    <h1 class="text-3xl my-4">Fuentes</h1>
+    <div class="container mx-auto px-4 w-full">
+        <ul class="list-none space-y-2 flex justify-between items-center">
+          <li>
+            <a href="https://www.ecologiadigital.bio" class="text-blue-600 hover:text-blue-800 visited:text-purple-600">Ecología Digital: Contaminación Auditiva</a>
+          </li>
+          <li>
+            <a href="https://www.ecologiaverde.com" class="text-blue-600 hover:text-blue-800 visited:text-purple-600">Ecología Verde: Contaminación Acústica</a>
+          </li>
+          <li>
+            <a href="https://girosalut.org" class="text-blue-600 hover:text-blue-800 visited:text-purple-600">Girosalut: ¿Qué es la Contaminación Auditiva?</a>
+          </li>
+        </ul>
+      </div>
+      
+</Container>
 	</main>
 </Layout>

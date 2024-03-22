@@ -4,123 +4,31 @@ import  Home  from '../Icons/Home.astro'
 import  Paint  from '../Icons/Paint.astro'
 import  Bulb  from '../Icons/Bubble.astro'
 import  Camera  from '../Icons/Camera.astro'
-const options=[
-    {name:'Inicio',url:'/',description:'Pagina principal'},
-    {name:'Proyecto',url:'/Projects',description:'Proyectos realizados'},
-    // {name:'Clase',url:'/Work',description:'Trabajos realizados en clase'},
-    // {name:'Galeria',url:'/Galery',description:"Galeria de imagenes"},
-  ]
+interface Props{
+  titleButton: string,
+  page: string
+}
+  const {titleButton,page} =Astro.props
 ---
-<!-- <section class="w-full flex justify-center items-center h-8 ">
-    <nav transition:persist="" class="bottom-0 flex fixed z-10 max-w-64 w-full mb-3 scale-item">
-        <ul id="dock-container-item" class="flex w-full py-2 px-4 gap-x-4 justify-center items-center shadow-xl rounded-full">
-           {
-            options.map((option, index) => {
-                return (
-                <ToolTipMenu url={option.url} action={option.name} description={option.description}>
-                    {option.name==='Inicio' && <Home class="w-8 h-8" />}
-                    {option.name==='Proyecto' && <Paint class="w-8 h-8" />}
-                    {option.name==='Clase' && <Bulb class="w-8 h-8" />}
-                    {option.name==='Galeria' && <Camera class="w-8 h-8" />}
-                </ToolTipMenu>
-                )
-            })
-           } 
-        </ul>
-    </nav>
-</section> -->
 <nav class=" bg-background top-0 z-10 w-full">
   <div class="max-w-6xl mx-auto px-4">
     <div class="flex justify-between">
       <div class="flex space-x-4">
         <!-- logo -->
         <div>
-          <a href="#" class="flex items-center py-5 px-2 text-gray-700">
+          <a href="./" class="flex items-center py-5 px-2 text-gray-700">
             <span class="font-bold">Equipo 1</span>
           </a>
         </div>
         <!-- primary nav -->
       </div>
       <div class="hidden md:flex items-center space-x-1">
-        <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Services</a>
-        <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Results</a>
-        <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">About Us</a>
-        <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Blog</a>
       </div>
       <!-- secondary nav -->
-      <div class="hidden md:flex items-center space-x-1">
-        <a href="#" class="py-2 px-7 bg-black rounded-full text-gray-100 hover:text-gray-400">Talk to Us</a>
+      <div class="flex items-center space-x-1">
+        <a href={page} class="py-2 px-7 bg-black rounded-full text-gray-100 hover:text-gray-400">{titleButton}</a>
       </div>
       <!-- mobile button goes here -->
     </div>
   </div>
 </nav>
-
-<!-- <script>
-    const menuContainer = document.querySelector('.dock-container-item');
-const menuItems = document.querySelectorAll('.dock-item');
-const defaultItemScale = 1;
-const hoverScale = 2.5;
-const sideItemScale = 2;
-
-const defaultMargin = "10px";
-const expandedMargin = "40px";
-
-// Crear un objeto para rastrear el estado de los elementos
-const itemStates = {};
-
-menuItems.forEach((item, index) => {
-  // Agregar controladores de eventos para actualizar el estado
-  item.addEventListener('mouseenter', () => {
-    itemStates[index].isHovered = true;
-
-    // Marcar los vecinos como side items
-    if (index > 0) {
-      itemStates[index - 1].isSideItem = true;
-    }
-    if (index < menuItems.length - 1) {
-      itemStates[index + 1].isSideItem = true;
-    }
-  });
-
-  item.addEventListener('mouseleave', () => {
-    itemStates[index].isHovered = false;
-
-    // Desmarcar los vecinos como side items
-    if (index > 0) {
-      itemStates[index - 1].isSideItem = false;
-    }
-    if (index < menuItems.length - 1) {
-      itemStates[index + 1].isSideItem = false;
-    }
-  });
-});
-
-const updateDockItems = () => {
-  menuItems.forEach((item, index) => {
-    let scale = defaultItemScale;
-    let margin = defaultMargin;
-    if (itemStates[index].isHovered) {
-      scale = hoverScale;
-      margin = expandedMargin;
-    } else if (itemStates[index].isSideItem) {
-      scale = sideItemScale;
-      margin = expandedMargin;
-    }
-    (item as HTMLElement).style.transform = `scale(${scale})`;
-    (item as HTMLElement).style.margin =`0 ${margin}`;
-  });
-};
-menuItems.forEach((item) => {
-item.addEventListener("mousemove",()=>{
-menuItems.forEach((otherItem,index)=>{
-    otherItem[index].isHovered=item;
-    otherItem[index].isSideItem=Math.abs(
-        Array.from(menuItems).indexOf(otherItem)-
-        Array.from(menuItems).indexOf(item)
-    )===1;
-});
-updateDockItems();
-});
-});
-</script> -->

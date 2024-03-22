@@ -20,7 +20,7 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body  class=" max-w-screen-2xl m-auto">
-		<NavBar titleButton={title=="Inicio-Equipo1"?"Galeria":"Inicio"} page={title=="Galeria"?"./":"./"}  />
+		<NavBar titleButton={title=="Inicio-Equipo1"?"Galeria":"Inicio"} page={title=="Galeria"?"./index":"./Galery"}  />
 		<slot />
 		<Footer/>
 	</body>

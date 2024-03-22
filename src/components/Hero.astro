@@ -1,17 +1,17 @@
 ---
 import Arrow from '../components/Arrow.astro'
 ---
-<section class="relative bg-background flex-col w-full  flex justify-center items-center min-h-screen">
+<section class="relative p-7 bg-background flex-col w-full  flex justify-center items-center min-h-screen">
   <section class="flex justify-center items-center text-center flex-col">
-    <h1 class=" text-8xl text-title font-[500] tracking-wider leading-2 ">Reduce el Ruido</h1>
-    <h2 class="text-8xl text-title font-[500] tracking-wider leading-2">Eleva la Calma</h2>
+    <h1 class="text-2xl md:text-8xl text-title font-[500] tracking-wider leading-2 ">Reduce el Ruido</h1>
+    <h2 class="text-2xl md:text-8xl text-title font-[500] tracking-wider leading-2">Eleva la Calma</h2>
   </section>
-  <img src="/img/megafono2.webp" alt="Logo" class="w-1/4 rounded-full"/>
-  <section class="flex justify-between w-full p-7 font-extralight">
-    <p class="max-w-md">
+  <img src="/img/megafono2.webp" alt="Logo" class="w-1/4 rounded-full my-5"/>
+  <section class="flex flex-col md:flex-row justify-between w-full p-7 font-extralight">
+    <p class="text-balance w-full md:max-w-md">
       El ruido es el contaminante más común y se define como cualquier sonido clasificado como molesto o inoportuno
     </p>
-    <a class="  font-extralight flex text-2xl cursor-pointer justify-center items-center" href="#second">
+    <a class="text-base  font-extralight flex md:text-2xl cursor-pointer justify-center items-center" href="#second">
       <span class=" text-balance text-base font-extralight">Explorar</span>
       <Arrow />
     </a>

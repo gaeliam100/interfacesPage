@@ -7,10 +7,11 @@ import  Camera  from '../Icons/Camera.astro'
 const options=[
     {name:'Inicio',url:'/',description:'Pagina principal'},
     {name:'Proyecto',url:'/Projects',description:'Proyectos realizados'},
-    {name:'Clase',url:'/Work',description:'Trabajos realizados en clase'},
-    {name:'Galeria',url:'/Galery',description:"Galeria de imagenes"},]
+    // {name:'Clase',url:'/Work',description:'Trabajos realizados en clase'},
+    // {name:'Galeria',url:'/Galery',description:"Galeria de imagenes"},
+  ]
 ---
-<section class="w-full flex justify-center items-center h-8 ">
+<!-- <section class="w-full flex justify-center items-center h-8 ">
     <nav transition:persist="" class="bottom-0 flex fixed z-10 max-w-64 w-full mb-3 scale-item">
         <ul id="dock-container-item" class="flex w-full py-2 px-4 gap-x-4 justify-center items-center shadow-xl rounded-full">
            {
@@ -27,9 +28,35 @@ const options=[
            } 
         </ul>
     </nav>
-</section>
+</section> -->
+<nav class=" bg-background top-0 z-10 w-full">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex justify-between">
+      <div class="flex space-x-4">
+        <!-- logo -->
+        <div>
+          <a href="#" class="flex items-center py-5 px-2 text-gray-700">
+            <span class="font-bold">Equipo 1</span>
+          </a>
+        </div>
+        <!-- primary nav -->
+      </div>
+      <div class="hidden md:flex items-center space-x-1">
+        <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Services</a>
+        <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Results</a>
+        <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">About Us</a>
+        <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Blog</a>
+      </div>
+      <!-- secondary nav -->
+      <div class="hidden md:flex items-center space-x-1">
+        <a href="#" class="py-2 px-7 bg-black rounded-full text-gray-100 hover:text-gray-400">Talk to Us</a>
+      </div>
+      <!-- mobile button goes here -->
+    </div>
+  </div>
+</nav>
 
-<script>
+<!-- <script>
     const menuContainer = document.querySelector('.dock-container-item');
 const menuItems = document.querySelectorAll('.dock-item');
 const defaultItemScale = 1;
@@ -96,4 +123,4 @@ menuItems.forEach((otherItem,index)=>{
 updateDockItems();
 });
 });
-</script>
+</script> -->
